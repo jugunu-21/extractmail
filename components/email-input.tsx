@@ -39,9 +39,10 @@ const BeamInput = () => {
                 e.preventDefault()
                 createUser(inputEmail).then(() => {
                     setInputEmail("")
-                    toast.success(`Email "${inputEmail}" added successfully!`);
+                    toast.success(`Email added successfully!`);
                 }
                 ).catch(() => {
+
                     toast.error(`Failed to add email. Please try again.`);
                 }
                 )
@@ -54,6 +55,7 @@ const BeamInput = () => {
             className="relative flex w-full  items-center gap-2 rounded-full border border-white/20 bg-gradient-to-br from-white/20 to-white/5 py-1.5 pl-6 pr-1.5"
         >
             <input
+                required
                 ref={inputRef}
                 value={inputEmail}
                 type="email"

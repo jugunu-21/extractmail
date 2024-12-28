@@ -41,8 +41,8 @@ const BeamInput = () => {
                     setInputEmail("")
                     toast.success(`Email added successfully!`);
                 }
-                ).catch(() => {
-
+                ).catch((error) => {
+                    console.log("err", error)
                     toast.error(`This email is already registered`);
                 }
                 )

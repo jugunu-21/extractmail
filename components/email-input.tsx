@@ -1,44 +1,26 @@
-
-
+'use client'
 import {
     animate,
     useMotionTemplate,
     useMotionValue,
     motion,
 } from "framer-motion";
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { FiArrowRight } from "react-icons/fi";
-
-/**
- IMPORTANT!!
- 
- This component requires the following class for cross browser masking support
- 
-.mask-with-browser-support {
-  mask: linear-gradient(black, black), linear-gradient(black, black);
-  mask-clip: content-box, border-box;
-  mask-composite: exclude;
-  -webkit-mask:
-    linear-gradient(black, black) content-box,
-    linear-gradient(black, black);
-  -webkit-mask-clip: content-box, border-box;
-  -webkit-mask-composite: xor;
-}
- */
-
+import { createUser } from "./functions";
+import toast from "react-hot-toast";
 const EmailInput = () => {
     return (
         <div
-            className="flex h-[200px] items-center justify-center bg-black px-2"
+            className=""
         >
             <BeamInput />
         </div>
     );
 };
-
 const BeamInput = () => {
     const inputRef = useRef<HTMLInputElement | null>(null);
-
+    const [inputEmail, setInputEmail] = useState('')
     const turn = useMotionValue(0);
 
     useEffect(() => {
@@ -47,24 +29,40 @@ const BeamInput = () => {
             duration: 5,
             repeat: Infinity,
         });
-    }, []);
+    }, [turn]);
 
     const backgroundImage = useMotionTemplate`conic-gradient(from ${turn}turn, #a78bfa00 75%, #a78bfa 100%)`;
 
     return (
         <form
             onSubmit={(e) => {
-                e.preventDefault();
+                e.preventDefault()
+                createUser(inputEmail).then(() => {
+                    setInputEmail("")
+                    toast.success(`Email "${inputEmail}" added successfully!`);
+                }
+                ).catch(() => {
+                    toast.error(`Failed to add email. Please try again.`);
+                }
+                )
+                    ;
             }}
             onClick={() => {
-                inputRef.current?.focus();
+                inputRef.current?.focus()
+                    ;
             }}
-            className="relative flex w-full max-w-md items-center gap-2 rounded-full border border-white/20 bg-gradient-to-br from-white/20 to-white/5 py-1.5 pl-6 pr-1.5"
+            className="relative flex w-full  items-center gap-2 rounded-full border border-white/20 bg-gradient-to-br from-white/20 to-white/5 py-1.5 pl-6 pr-1.5"
         >
             <input
                 ref={inputRef}
+                value={inputEmail}
                 type="email"
-                placeholder="Enter your email"
+                onChange={(e) => {
+                    setInputEmail(e.currentTarget.value)
+
+                    console.log("email", inputEmail)
+                }}
+                placeholder="Enter email for exclusive early access ..."
                 className="w-full bg-transparent text-sm text-white placeholder-white/80 focus:outline-0"
             />
 
@@ -73,16 +71,16 @@ const BeamInput = () => {
                 type="submit"
                 className="group flex shrink-0 items-center gap-1.5 rounded-full bg-gradient-to-br from-gray-50 to-gray-400 px-4 py-3 text-sm font-medium text-gray-900 transition-transform active:scale-[0.985]"
             >
-                <span>Join Waitlist</span>
+                <span>Submit Email</span>
                 <FiArrowRight className="-mr-4 opacity-0 transition-all group-hover:-mr-0 group-hover:opacity-100 group-active:-rotate-45" />
             </button>
 
-            <div className="pointer-events-none absolute inset-0 z-10 rounded-full">
+            <div className="pointer-events-none absolute inset-0  rounded-full">
                 <motion.div
                     style={{
                         backgroundImage,
                     }}
-                    className="mask-with-browser-support absolute -inset-[1px] rounded-full border border-transparent bg-origin-border"
+                    className="mask-with-browser-support absolute -inset-[1px] rounded-full border border-transparent bg-origin-border "
                 />
             </div>
         </form>

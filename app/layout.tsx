@@ -5,6 +5,7 @@ import "./globals.css";
 import { Toaster } from "@/components/ui/toaster"
 import Head from 'next/head';
 import Script from 'next/script';
+import { GoogleAnalytics } from '@next/third-parties/google'
 // const geistSans = Geist({
 //   variable: "--font-geist-sans",
 //   subsets: ["latin"],
@@ -27,7 +28,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <Head>
+      {/* <Head>
         <Script
           strategy="afterInteractive"
           src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}`}
@@ -44,7 +45,7 @@ export default function RootLayout({
       `,
           }}
         />
-      </Head>
+      </Head> */}
 
       <body
       // className={`${geistSans.variable} ${geistMono.variable} antialiased`}
@@ -53,6 +54,7 @@ export default function RootLayout({
         {children}
         <Toaster />
       </body>
+      <GoogleAnalytics gaId={`${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}`} />
     </html>
   );
 }

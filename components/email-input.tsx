@@ -5,10 +5,12 @@ import {
     useMotionValue,
     motion,
 } from "framer-motion";
+import { useToast } from "@/hooks/use-toast"
+
 import React, { useEffect, useRef, useState } from "react";
 import { FiArrowRight } from "react-icons/fi";
 import { createUser } from "./functions";
-import toast from "react-hot-toast";
+
 const EmailInput = () => {
     return (
         <div
@@ -19,6 +21,7 @@ const EmailInput = () => {
     );
 };
 const BeamInput = () => {
+    const { toast } = useToast()
     const inputRef = useRef<HTMLInputElement | null>(null);
     const [inputEmail, setInputEmail] = useState('')
     const turn = useMotionValue(0);
@@ -39,11 +42,21 @@ const BeamInput = () => {
                 e.preventDefault()
                 createUser(inputEmail).then(() => {
                     setInputEmail("")
-                    toast.success(`Email added successfully!`);
+                    // toast.success(`Email added successfully!`);
+                    console.log("errgbbuh",)
+                    toast({
+                        // className: "top-10 right-0",
+                        description: "Email added successfully!",
+                    })
                 }
                 ).catch((error) => {
-                    console.log("err", error)
-                    toast.error(`This email is already registered`);
+                    console.log("error", error)
+                    // toast.error(`This email is already registered`);
+                    toast({
+                        variant: "destructive",
+                        // className: "top-10",
+                        description: "This email is already registered",
+                    })
                 }
                 )
                     ;

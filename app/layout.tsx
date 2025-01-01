@@ -1,15 +1,23 @@
 
 import type { Metadata } from "next";
-// import { Geist, Geist_Mono } from "next/font/google";
+import { Playfair_Display, Source_Sans_3 } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "@/components/ui/toaster"
 import Head from 'next/head';
 import Script from 'next/script';
 import { GoogleAnalytics } from '@next/third-parties/google'
-// const geistSans = Geist({
-//   variable: "--font-geist-sans",
-//   subsets: ["latin"],
-// });
+const playfairDisplay = Playfair_Display({
+  variable: "--font-playfair-diaplay",
+  subsets: ["latin-ext"],
+  weight: "500",
+  // letterSpacing: "0.05em",
+});
+const sourceSans_3 = Source_Sans_3({
+  variable: "--font-Source-Sans-3",
+  subsets: ["latin-ext"],
+  weight: "500",
+  // letterSpacing: "0.05em",
+});
 // const geistMono = Geist_Mono({
 //   variable: "--font-geist-mono",
 //   subsets: ["latin"],
@@ -48,7 +56,7 @@ export default function RootLayout({
       </Head> */}
 
       <body
-      // className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${playfairDisplay.variable} ${sourceSans_3.variable}  antialiased`}
       >
 
         {children}

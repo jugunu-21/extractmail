@@ -11,6 +11,13 @@ module.exports = {
 	],
 	theme: {
 		extend: {
+			fontFamily: {
+				// 👇 Add CSS variables
+				playfair: ["var(--font-playfair-diaplay)"],
+				sourceSan: ["var(--font-Source-Sans-3)"]
+				// mono: ["var(--font-roboto-mono)"],
+			},
+
 			animation: {
 				aurora: "aurora 60s linear infinite",
 			},

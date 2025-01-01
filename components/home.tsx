@@ -8,7 +8,7 @@ import { AuroraBackground } from "./ui/aurora-background";
 export default function Home() {
     return (
         <>
-            <div className="w-full mx-auto  h-screen overflow-scroll  bg-black ">
+            <div className="w-full mx-auto  h-screen overflow-scroll  bg-black text-[#f0d8b9]   ">
                 {/* <Vortex
                     backgroundColor="black"
                     className="flex items-center flex-col justify-center px-2 md:px-10 py-4 w-full  h-full "
@@ -24,8 +24,8 @@ export default function Home() {
                         }}
                         className="relative flex flex-col gap-4 items-center justify-center px-4"
                     >
-                        <h2 className="text-white text-2xl md:text-6xl font-bold text-center pt-6">
-                            <span className="relative">
+                        <h2 className="text-[#f0d8b9]   text-3xl md:text-6xl font-playfair text-center pt-6  ">
+                            <span className="relative ">
                                 OutsmartAI
                                 <svg
                                     viewBox="0 0 286 73"
@@ -46,19 +46,20 @@ export default function Home() {
                                 </svg>
                             </span>{" "} is coming...
                         </h2>
-                        <p className="text-gray-200 font-bold text-sm md:text-xl max-w-xl my-6 text-center ">
-                            And when it arrives, nothing will be the same.
-                            You&apos;re about to witness something huge.
-                            But we&apos;re not giving away the details just yet.
-                            What we can tell you is this
-                        </p>
+
                         <div className="p-2 ">
-                            <div className=" bg-white/20 backdrop-blur-md px-6 py-6 text-gray-300  rounded-xl">
+                            <div className=" bg-[#353535]/60 backdrop-blur-md px-6 py-6 text-[#f0d8b9]  rounded-xl">
 
                                 <div className="w-full max-w-xl space-y-2">
                                     {/* <div className="py-2 text-lg"><strong> [Sign up for exclusive early access]</strong></div> */}
                                     <EmailInput />
-                                    <TextGenerateEffect words="This is the future of performance marketing" />
+                                    <p className="text-[#f0dcc3] text-sm md:text-xl max-w-xl my-6 text-left font-sourceSan  pt-4 ">
+                                        And when it arrives, nothing will be the same.
+                                        You&apos;re about to witness something huge.
+                                        But we&apos;re not giving away the details just yet.
+                                        What we can tell you is this
+                                    </p>
+                                    <TextGenerateEffect className=" font-playfair" words="This is the future of performance marketing" />
                                     {/* <p className=" ">   And if you&apos;re not in, you&apos;re going to regret it.</p>
                                 <hr className="border-neutral-300" />
                                 <p className="">The clock&apos;s ticking.

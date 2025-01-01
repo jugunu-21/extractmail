@@ -74,19 +74,18 @@ const BeamInput = () => {
                 type="email"
                 onChange={(e) => {
                     setInputEmail(e.currentTarget.value)
-
                     console.log("email", inputEmail)
                 }}
-                placeholder="Enter email for exclusive early access ..."
-                className="w-full bg-transparent text-sm text-white placeholder-white/80 focus:outline-0"
+                placeholder="Get early access.."
+                className="w-full bg-transparent text-sm 
+                font-serif placeholder-white/80 focus:outline-0"
             />
-
             <button
                 onClick={(e) => e.stopPropagation()}
                 type="submit"
-                className="group flex shrink-0 items-center gap-1.5 rounded-full bg-gradient-to-br from-gray-50 to-gray-400 px-4 py-3 text-sm font-medium text-gray-900 transition-transform active:scale-[0.985]"
+                className="group flex shrink-0 items-center gap-1.5 rounded-full bg-gradient-to-br from-[#b6acac] to-gray-400 px-4 py-3 text-sm font-medium text-gray-900 transition-transform active:scale-[0.985]"
             >
-                <span>Submit Email</span>
+                <span className="text-black font-s">Submit Email</span>
                 <FiArrowRight className="-mr-4 opacity-0 transition-all group-hover:-mr-0 group-hover:opacity-100 group-active:-rotate-45" />
             </button>
 

@@ -45,7 +45,7 @@ const BeamInput = () => {
                     // toast.success(`Email added successfully!`);
                     console.log("errgbbuh",)
                     toast({
-                        // className: "top-10 right-0",
+
                         description: "Email added successfully!",
                     })
                 }
@@ -54,7 +54,7 @@ const BeamInput = () => {
                     // toast.error(`This email is already registered`);
                     toast({
                         variant: "destructive",
-                        // className: "top-10",
+
                         description: "This email is already registered",
                     })
                 }
